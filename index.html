@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frederick Theatre Online Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="logic.js"></script>
 </head>
 <body>
     <div class="image"></div>
@@ -39,25 +40,33 @@
   <path d="M201.523 43.4076L206.408 32.6268H207.522L212.406 43.4076H211.216L206.728 33.289H207.186L202.698 43.4076H201.523ZM203.446 40.5276L203.782 39.6035H209.995L210.331 40.5276H203.446Z" fill="black"/>
   <path d="M215.7 43.4076V32.6268H216.83V42.4219H222.813V43.4076H215.7Z" fill="black"/>
             </svg>
-        <form action="https://8hqo4aw8vb.execute-api.us-east-1.amazonaws.com/default/TechTuesday" method="post" id="signin-form">
-            <div>
-                <label for="name">First & Last Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="grade">Grade Level</label>
-                <select id="grade" name="grade" required>
-                    <option value="">Select</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </div>
-            <div>
-                <button type="submit">Sign In</button>
-            </div>
-        </form>
+
+        <div id="sign-in-state">
+            <form id="signin-form">
+                <div>
+                    <label for="name">First & Last Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="grade">Grade Level</label>
+                    <select id="grade" name="grade" required>
+                        <option value="">Select</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" id="sign-in-btn">Sign In</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="sign-out-state" style="display: none;">
+            <p>Signed in as <span id="user-name"></span></p>
+            <button id="sign-out-btn">Sign Out</button>
+        </div>
     </div>
 </body>
 </html>
