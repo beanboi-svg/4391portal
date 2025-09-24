@@ -1,31 +1,44 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
 
 html, body {
-    height: 100vh;
-    width: 100vw;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     color: black;
     display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
 }
 
 .image {
+    width: 45%;
+    height: 100%;
     background-image: url("https://raw.githubusercontent.com/beanboi-svg/4391portal/main/assets/hero-image.png");
     background-size: cover;
-    height: 100vh;
-    width: 45%;
+    background-position: center;
 }
 
 .main {
-    background-color: white;
-    height: 100vh;
     width: 55%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main svg {
+    margin-bottom: 40px;
 }
 
 /* Typography */
@@ -96,7 +109,6 @@ button {
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
     transition: background-color 0.2s ease 0.02s;
 }
 
@@ -124,4 +136,35 @@ button:hover {
     select {
         width: 300px;
     }
+}
+
+#sign-in-state, #sign-out-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+#sign-out-state {
+    display: none;
+}
+
+#sign-in-state, #sign-out-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#sign-out-state {
+    display: none;
+}
+
+#user-name {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 5px;
+    width: 100%;
 }
