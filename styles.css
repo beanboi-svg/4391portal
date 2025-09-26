@@ -132,6 +132,7 @@ button:hover {
     svg {
         width: 250px;
         height: 36px;
+        color: #0A2458
     }
     input,
     select {
