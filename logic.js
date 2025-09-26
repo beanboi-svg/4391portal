@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return alert("Please fill in all fields");
         }
 
-        setCookie("user", name, 3600); // 1 hour session
+        setCookie("user", name, 43200); // 1 hour session
         logSignIn(name, grade);
         console.log("User signed in:", name);
         updateUI(); // Update UI immediately
