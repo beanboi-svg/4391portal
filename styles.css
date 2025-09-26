@@ -21,7 +21,7 @@ html, body {
 .image {
     width: 45%;
     height: 100%;
-    background-image: url("https://raw.githubusercontent.com/beanboi-svg/4391portal/main/assets/hero-image.png");
+    background-image: url("./assets/hero-image.png");
     background-size: cover;
     background-position: center;
 }

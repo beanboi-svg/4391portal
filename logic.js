@@ -74,11 +74,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Placeholder spreadsheet logging functions
     function logSignIn(name, grade) {
         console.log(`Sign In: ${name}, Grade: ${grade}, Time: ${new Date().toISOString()}`);
-        // TODO: integrate with Google Apps Script or API
+        const toSend = {
+            name,
+            grade,
+            action: "signin"
+        }
+
+        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(toSend)
+        })       
     }
 
     function logSignOut(name) {
         console.log(`Sign Out: ${name}, Time: ${new Date().toISOString()}`);
-        // TODO: calculate time difference and integrate with Google Apps Script or API
+        const toSend = {
+            name,
+            action: "signout"
+        }
+
+        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(toSend)
+        })      
     }
 });
