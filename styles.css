@@ -132,15 +132,15 @@ button:hover {
 
 @media (max-width: 450px) {
     svg {
-        width: 320px;
+        width: 340px;
         height: 36px;
     }
     input,
     select {
-        width: 320px;
+        width: 340px;
     }
     button {
-    width: 320px;
+    width: 340px;
     height: 55px;
     font-size: 15px;
     }
