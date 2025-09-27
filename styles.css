@@ -53,6 +53,15 @@ p {
     text-decoration: underline;
 }
 
+p a,
+p a:visited,
+p a:link,
+p a:hover,
+p a:active {
+    color: black;
+    text-decoration: underline;
+}
+
 ::placeholder {
     font-size: 15px;
     line-height: 18px;
@@ -135,12 +144,44 @@ button:hover {
     display: none;
 }
 
-#user-name {
-    font-weight: 400;
+#sign-in-state .signed-in-as,
+#sign-out-state .signed-in-as {
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
-    line-height: 20px;
-    margin-top: 5px;
+    line-height: 18px;
+    font-weight: 300;
+    margin: 0 0 7px 0;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+#user-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    margin: 0;
     width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+#sign-in-state .signed-in-as a,
+#sign-in-state .signed-in-as a:visited,
+#sign-in-state .signed-in-as a:hover,
+#sign-in-state .signed-in-as a:active,
+#sign-in-state #user-name a,
+#sign-in-state #user-name a:visited,
+#sign-in-state #user-name a:hover,
+#sign-in-state #user-name a:active {
+    text-decoration: none;
+    color: black;
+}
+
+#sign-out-state button {
+    margin-top: 30px;
+    padding: 12px 40px;
 }
 
 @media (max-width: 1000px) {
