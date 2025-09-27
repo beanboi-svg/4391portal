@@ -19,7 +19,7 @@ html, body {
 }
 
 .image {
-    width: 45%;
+    width: 50%;
     height: 100%;
     background-image: url("./assets/hero-image.png");
     background-size: cover;
@@ -27,7 +27,7 @@ html, body {
 }
 
 .main {
-    width: 55%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
