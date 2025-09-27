@@ -53,13 +53,32 @@ p {
     text-decoration: underline;
 }
 
-p a,
-p a:visited,
-p a:link,
-p a:hover,
-p a:active {
+p a {
     color: black;
     text-decoration: underline;
+}
+
+.signed-in-as {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 300;
+    margin: 0 0 7px 0;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+#user-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
 }
 
 ::placeholder {
@@ -82,6 +101,7 @@ select {
     font-weight: 300;
     outline: none;
     margin-bottom: 15px;
+    background-color: white;
 }
 
 input {
@@ -98,8 +118,6 @@ select {
     padding: 0 40px 0 20px;
     color: rgba(0, 0, 0, 0.2);
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     cursor: pointer;
     background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='black' stroke-opacity='0.2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -109,6 +127,16 @@ select {
 
 select:valid {
     color: black;
+}
+
+select::-webkit-inner-spin-button,
+select::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 button {
@@ -142,41 +170,6 @@ button:hover {
 
 #sign-out-state {
     display: none;
-}
-
-#sign-in-state .signed-in-as,
-#sign-out-state .signed-in-as {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 18px;
-    font-weight: 300;
-    margin: 0 0 7px 0;
-    text-align: center;
-    color: black;
-    text-decoration: none;
-}
-
-#user-name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 39px;
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-}
-
-#sign-in-state .signed-in-as a,
-#sign-in-state .signed-in-as a:visited,
-#sign-in-state .signed-in-as a:hover,
-#sign-in-state .signed-in-as a:active,
-#sign-in-state #user-name a,
-#sign-in-state #user-name a:visited,
-#sign-in-state #user-name a:hover,
-#sign-in-state #user-name a:active {
-    text-decoration: none;
-    color: black;
 }
 
 #sign-out-state button {
