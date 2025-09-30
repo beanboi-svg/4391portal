@@ -22,7 +22,7 @@ body {
 .image {
     width: 50%;
     height: 100%;
-    background-image: url("./assets/asset-2.png");
+    background-image: url("./assets/asset-2-min.png");
     background-size: cover;
     background-position: center;
 }
