@@ -2,13 +2,13 @@
 
 html,
 body {
+    display: flex;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     color: black;
-    display: flex;
-    height: 100%;
-    width: 100%;
 }
 
 .container {
@@ -22,15 +22,15 @@ body {
 .image {
     width: 50%;
     height: 100%;
-    background-image: url("./assets/asset-2-min.png");
+    background-image: url("./assets/hero-image.png");
     background-size: cover;
     background-position: center;
 }
 
 .main {
-    width: 50%;
-    height: 100%;
     display: flex;
+    height: 100%;
+    width: 50%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -43,13 +43,14 @@ body {
 }
 
 p {
-    font-size: 12px;
-    color: black;
-    margin-top: 20px;
-    text-align: center;
     width: 360px;
+    margin-top: 20px;
+    padding: 0;
+    font-size: 12px;
     line-height: 16px;
     font-weight: 300;
+    text-align: center;
+    color: black;
     text-decoration: underline;
 }
 
@@ -59,26 +60,28 @@ p a {
 }
 
 .signed-in-as {
-    font-family: 'Inter', sans-serif;
+    margin: 0 0 7px 0;
+    padding: 0;
     font-size: 15px;
     line-height: 18px;
     font-weight: 300;
-    margin: 0 0 7px 0;
     text-align: center;
     color: black;
     text-decoration: none;
+    font-family: 'Inter', sans-serif;
 }
 
 #user-name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     font-size: 32px;
     line-height: 39px;
-    margin: 0;
-    width: 100%;
+    font-weight: 500;
     text-align: center;
-    text-decoration: none;
     color: black;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
 }
 
 ::placeholder {
@@ -92,20 +95,16 @@ input,
 select {
     width: 360px;
     height: 55px;
-    box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 980px;
+    margin-bottom: 15px;
+    padding: 0 40px 0 20px;
     font-size: 15px;
     line-height: 18px;
-    font-family: 'Inter', sans-serif;
     font-weight: 300;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 980px;
+    font-family: 'Inter', sans-serif;
     outline: none;
-    margin-bottom: 15px;
     background-color: white;
-}
-
-input {
-    padding: 0 40px 0 20px;
     color: black;
 }
 
@@ -115,7 +114,6 @@ select:focus {
 }
 
 select {
-    padding: 0 40px 0 20px;
     color: rgba(0, 0, 0, 0.2);
     appearance: none;
     cursor: pointer;
@@ -143,7 +141,6 @@ button {
     width: 360px;
     height: 55px;
     font-size: 15px;
-    font-family: 'Inter', sans-serif;
     line-height: 20px;
     font-weight: 300;
     color: white;
@@ -152,6 +149,7 @@ button {
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease 0.02s;
+    font-family: 'Inter', sans-serif;
 }
 
 button:hover {
@@ -161,10 +159,10 @@ button:hover {
 #sign-in-state,
 #sign-out-state {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     margin: 0 auto;
 }
 
@@ -177,11 +175,86 @@ button:hover {
     padding: 12px 40px;
 }
 
+.terms-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+}
+
+.alert-contain {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    padding: 14px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 34px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.alert-message {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.alert-text {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px;
+    font-size: 17px;
+    line-height: 22px;
+    font-weight: 300;
+    letter-spacing: -0.4px;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.terms-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.alert-accept {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding: 16px 13px;
+    font-size: 17px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: white;
+    background-color: black;
+    border-radius: 980px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease 0.02s;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
 @media (max-width: 1000px) {
     .image {
         display: none;
     }
-    
+
     .main {
         width: 100%;
         margin: 0 auto;
@@ -193,7 +266,7 @@ button:hover {
         width: 360px;
         height: 36px;
     }
-    
+
     input,
     select,
     button {
