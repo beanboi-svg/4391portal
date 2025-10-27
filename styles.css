@@ -198,7 +198,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     z-index: 9999;
 }
@@ -211,7 +211,7 @@ button:hover {
     box-sizing: border-box;
     background-color: white;
     border-radius: 34px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
