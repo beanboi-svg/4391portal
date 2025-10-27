@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:300,400,500,600&display=swap");
+
+html,
+body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    position: sticky;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background-image: url("https://raw.githubusercontent.com/beanboi-svg/4391portal/main/assets/asset-3-min.png");
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.main {
+    display: flex;
+    height: auto;
+    width: 50%;
+    overflow-y: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 90px 40px 40px 40px;
+    box-sizing: border-box;
+    gap: 30px;
+}
+
+.main a {
+    color: black;
+    text-decoration: underline;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+    text-align: center;
+}
+
+.callout {
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    font-weight: 400;
+    text-align: center;
+    color: black;
+}
+
+.section {
+    width: 100%;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+    color: black;
+}
+
+p {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 300;
+    margin: 0px 0px 20px 0px;
+    color: black;
+}
+
+li {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 300;
+    margin: 0px 0px 10px 0px;
+    color: black;
+}
