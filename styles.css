@@ -96,7 +96,8 @@ select {
     width: 360px;
     height: 55px;
     margin-bottom: 15px;
-    padding: 0 40px 0 20px;
+    /* keep symmetric padding so text inside inputs is visually centered */
+    padding: 0 20px;
     font-size: 15px;
     line-height: 18px;
     font-weight: 300;
@@ -173,6 +174,18 @@ button:hover {
 #sign-out-state button {
     margin-top: 30px;
     padding: 12px 40px;
+}
+
+#signin-form {
+    width: 360px;
+    margin: 0 auto;
+}
+
+#signin-form input,
+#signin-form select,
+#signin-form button {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .terms-alert {

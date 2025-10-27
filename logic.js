@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const signOutState = document.getElementById("sign-out-state");
     const userNameSpan = document.getElementById("user-name");
     const signOutBtn = document.getElementById("sign-out-btn");
+    const termsSection = document.getElementById("terms-section");
+    const termsAgreeButton = document.getElementById("agree-btn");
 
     // Centralized UI switching function
     function updateUI() {
@@ -24,22 +26,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Initial UI check
+    termsSection.style.display = "none";
     updateUI();
 
     // Sign In handler
     signInForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const name = document.getElementById("name").value.trim();
         const grade = document.getElementById("grade").value;
+
         if (!name || !grade) {
             console.log("Sign-in failed: missing fields");
             return alert("Please fill in all fields");
         }
 
-        setCookie("user", name, 43200); // 1 hour session
+        if (getCookie("termsAccepted") !== "true") {
+            termsSection.style.display = "flex";
+            console.log("Terms not accepted yet — showing terms panel and pausing sign-in");
+            return;
+        }
+
+        setCookie("user", name, 43200); // 12 hour session
         logSignIn(name, grade);
         console.log("User signed in:", name);
         updateUI(); // Update UI immediately
+    });
+
+    termsAgreeButton.addEventListener("click", () => {
+        const oneYearSeconds = 60 * 60 * 24 * 365;
+        setCookie("termsAccepted", "true", oneYearSeconds);
+        termsSection.style.display = "none";
+        console.log("Terms accepted — cookie set and hiding terms panel");
+
+        if (typeof signInForm.requestSubmit === "function") {
+            signInForm.requestSubmit();
+        } else {
+            signInForm.submit();
+        }
     });
 
     // Sign Out handler
@@ -80,14 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
             action: "signin"
         }
 
-        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+        /*fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
             method: "POST",
             mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toSend)
-        })       
+        })*/       
     }
 
     function logSignOut(name) {
