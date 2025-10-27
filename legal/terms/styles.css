@@ -99,3 +99,14 @@ li {
     margin: 0px 0px 10px 0px;
     color: black;
 }
+
+@media (max-width: 1000px) {
+    .image {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
