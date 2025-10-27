@@ -104,14 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
             action: "signin"
         }
 
-        /*fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
             method: "POST",
             mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toSend)
-        })*/       
+        })
     }
 
     function logSignOut(name) {
