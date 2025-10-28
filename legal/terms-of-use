@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - Terms of Use</title>
+    <meta name="description" content="Easily track your tech hours from Tech Tuesday or any other work sessions. Log time, stay organized, and keep your progress up to date.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/favicon.svg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/open-graph.png">
+    <script src="logic.js"></script>
+</head>
+<body>
+    <div class="image"></div>
+    <div class="main">
+        <div class="heading">
+            <h1>Terms of Use</h1>
+            <p class="callout">Last Updated: October 26, 2025</p>
+        </div>
+        <div class="section">
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing or using the Frederick Theatre Online Portal (“the Portal”) at <a href="https://portal.4391.org" target="_blank">https://portal.4391.org</a>, you agree to comply with and be bound by these Terms and Conditions (“Terms”).</p>
+            <p>The Portal is operated for the Theatre Troupe 4391 program at Frederick High School and is intended for students, staff, and authorized participants to log and manage work hours for theatrical productions.</p>
+            <p>If you do not agree to these Terms, you must not use the Portal.</p>
+        </div>
+        <div class="section">
+            <h3>2. Eligibility and Use</h3>
+            <p>The Frederick Theatre Online Portal is intended for use by Frederick High School students, staff, and authorized participants involved in Theatre Troupe 4391 activities.</p>
+            <p>No user accounts are required to use the Portal; users log their work hours using their name and personal identifiers. By using the Portal, you represent that you are authorized to participate in the logging and management of work hours for Frederick High School theatrical productions.</p>
+            <p>Users must provide accurate information and use the Portal solely for its intended purpose. Misuse of the Portal, including providing false information or attempting to interfere with its functionality, is strictly prohibited.</p>
+        </div>
+        <div class="section">
+            <h3>3. Intellectual Property and Content</h3>
+            <p>All content on the Frederick Theatre Online Portal, including text, logos, branding, and other materials, is designed and distributed by Frederick High School Theatre and is the property of the school and Theatre Troupe 4391.</p>
+            <p>Users may not use, reproduce, distribute, or display any Portal content, branding, or likeness without explicit written permission from Frederick High School Theatre. Unauthorized use of Portal materials is strictly prohibited.</p>
+        </div>
+        <div class="section">
+            <h3>4. User Responsibilities and Conduct</h3>
+            <p>Users of the Frederick Theatre Online Portal must:</p>
+            <ul>
+                <li>Provide accurate information, including their name and grade level, when logging work hours.</li>
+                <li>Not interfere with the Portal in any way. Any attempts to disrupt, modify, or bypass Portal functionality are strictly prohibited.</li>
+                <li>Accurately record the start and end of each work session. Work hours not properly logged will not be added retroactively. Any exceptions to this policy may be granted solely at the discretion of the theatre director. Retroactive modifications to previously submitted hours are strictly prohibited.</li>
+        </ul>
+        <p>Compliance with these rules ensures the integrity and accuracy of all records in the Portal.</p>
+        </div>
+        <div class="section">
+            <h3>5. Limitation of Liability</h3>
+            <p>Frederick High School and Theatre Troupe 4391 are not responsible for any inaccuracies resulting from user-provided information.</p>
+            <p>In the event of technical issues or Portal downtime, all valid work hours will still be logged accurately once the issue is resolved.</p>
+            <p>If a student misuses the Portal, their entry may be deleted, and appropriate corrective action may be taken by the theatre director.</p>
+            <p>The Portal is provided for the sole purpose of logging work hours for theatrical productions, and users agree to use it responsibly.</p>
+        </div>
+        <div class="section">
+            <h3>6. Changes to Terms</h3>
+            <p>Frederick High School Theatre and Theatre Troupe 4391 may update these Terms and Conditions from time to time to reflect changes in the Portal or program policies.</p>
+            <p>When updates are made, the “Last Updated” date at the top of this page will be revised. Users are encouraged to review these Terms periodically to stay informed of their rights and responsibilities while using the Portal.</p>
+        </div>
+</body>
+</html>
