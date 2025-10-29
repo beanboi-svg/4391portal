@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const signOutState = document.getElementById("sign-out-state");
     const userNameSpan = document.getElementById("user-name");
     const signOutBtn = document.getElementById("sign-out-btn");
-    const termsSection = document.getElementById("terms-section");
-    const termsAgreeButton = document.getElementById("agree-btn");
+    //const termsSection = document.getElementById("terms-section");
+    //const termsAgreeButton = document.getElementById("agree-btn");
 
     // Centralized UI switching function
     function updateUI() {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     // Initial UI check
-    termsSection.style.display = "none";
+    //termsSection.style.display = "none";
     updateUI();
 
     // Sign In handler
@@ -62,11 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return alert("Please fill in all fields");
         }
 
-        if (getCookie("termsUpdated") !== window.fetchedTermsUpdated || getCookie("termsAccepted") !== "true") {
+        /*if (getCookie("termsUpdated") !== window.fetchedTermsUpdated || getCookie("termsAccepted") !== "true") {
             termsSection.style.display = "flex";
             console.log("Terms not accepted yet — showing terms panel and pausing sign-in");
             return;
-        }
+        }*/
 
         setCookie("user", name, 43200); // 12 hour session
         logSignIn(name, grade);
@@ -78,14 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const oneYearSeconds = 60 * 60 * 24 * 365;
         setCookie("termsAccepted", "true", oneYearSeconds);
         setCookie("termsUpdated", window.fetchedTermsUpdated || "unknown", oneYearSeconds);
-        termsSection.style.display = "none";
+        //termsSection.style.display = "none";
         console.log("Terms accepted — cookie set and hiding terms panel");
 
-        if (typeof signInForm.requestSubmit === "function") {
-            signInForm.requestSubmit();
-        } else {
+        //if (typeof signInForm.requestSubmit === "function") {
+            //signInForm.requestSubmit();
+        //} else {
             signInForm.submit();
-        }
+        //}
     });
 
     // Sign Out handler
