@@ -25,27 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    fetch('./legal/terms-of-use/')
-        .then((res) => {
-            if (!res.ok) throw new Error('Failed to fetch terms: ' + res.status);
-            return res.text();
-        })
-        .then((html) => {
-            try {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const fetchedUpdatedEl = doc.getElementById('updated');
-                const fetchedUpdatedText = fetchedUpdatedEl ? fetchedUpdatedEl.textContent.trim() : null;
-
-                window.fetchedTermsUpdated = fetchedUpdatedText;
-            } catch (err) {
-                console.warn('Error parsing fetched terms HTML:', err);
-            }
-        })
-        .catch((err) => {
-            console.warn('Error fetching ./legal/terms-of-use/:', err);
-        });
-
     // Initial UI check
     termsSection.style.display = "none";
     updateUI();
@@ -62,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return alert("Please fill in all fields");
         }
 
-        if (getCookie("termsUpdated") !== window.fetchedTermsUpdated || getCookie("termsAccepted") !== "true") {
+        if (getCookie("termsAccepted") !== "true") {
             termsSection.style.display = "flex";
             console.log("Terms not accepted yet — showing terms panel and pausing sign-in");
             return;
@@ -77,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     termsAgreeButton.addEventListener("click", () => {
         const oneYearSeconds = 60 * 60 * 24 * 365;
         setCookie("termsAccepted", "true", oneYearSeconds);
-        setCookie("termsUpdated", window.fetchedTermsUpdated || "unknown", oneYearSeconds);
         termsSection.style.display = "none";
         console.log("Terms accepted — cookie set and hiding terms panel");
 
