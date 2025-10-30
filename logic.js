@@ -103,13 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cookie helper functions
     function setCookie(name, value, seconds) {
-        document.cookie = `${name}=${value}; path=/; max-age=${seconds}`;
-        console.log(`Cookie set: ${name}=${value}`);
+        document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${seconds}`;
+        console.log(`Cookie set: ${name}=${encodeURIComponent(value)}`);
     }
 
     function getCookie(name) {
         const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        return match ? match[2] : null;
+        if (!match) return null;
+        try {
+            if (decodeURIComponent(match[2].replace(/\+/g, ' ')) === match[2]) {
+                setCookie(name, match[2],  60 * 60 * 24 * 365);
+            }
+            return decodeURIComponent(match[2].replace(/\+/g, ' '));
+        } catch (err) {
+            return match[2];
+        }
     }
 
     function deleteCookie(name) {
@@ -126,14 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
             action: "signin"
         }
 
-        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+        /*fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
             method: "POST",
             mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toSend)
-        })
+        })*/
     }
 
     function logSignOut(name) {
@@ -143,13 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
             action: "signout"
         }
 
-        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+        /*fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
             method: "POST",
             mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(toSend)
-        })      
+        })    */  
     }
 });
