@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frederick Theatre Online Portal</title>
-    <meta name="description" content="Frederick Theatre">
+    <meta name="description" content="Easily track actor attendance for rehearsals and performances. Log attendance, stay organized, and keep records up to date.">
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/favicon.svg">
     <meta property="og:image" content="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/open-graph.png">
+    <script src="logic.js"></script>
 </head>
 <body>
     <div class="image"></div>
@@ -46,10 +47,41 @@
             <path d="M247.689 39.2522L241.828 52.1891H243.238L244.771 48.7331H251.926L253.459 52.1891H254.888L249.026 39.2522H247.689ZM248.349 40.6664L251.434 47.6242H245.263L248.349 40.6664Z" fill="black"/>
             <path d="M258.84 39.2522V52.1891H267.376V51.0063H260.196V39.2522H258.84Z" fill="black"/>
         </svg>
+        <div id="sign-in-state">
+            <form id="signin-form" autocomplete="off">
+                <div>
+                    <input type="text" id="name" name="name" required placeholder="Full Name">
+                </div>
+                <div>
+                    <select id="grade" name="grade" required>
+                        <option value="">Grade Level</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" id="sign-in-btn">Continue</button>
+                </div>
+            </form>
+        </div>
 
-        <h2>How are you checking in?</h2>
-        <button onclick="location.href='tech'">Continue as Technician</button>
-        <button onclick="location.href='actors'">Continue as Actor</button>
+        <div id="sign-out-state" style="display: none;">
+            <p class="signed-in-as">Signed in as</p>
+            <p id="user-name"></p>
+            <button id="sign-out-btn">End Session</button>
+        </div>
+    </div>
+    <div id="terms-section" class="terms-alert">
+        <div class="alert-contain">
+            <div class="alert-message">
+                <p class="alert-text">To continue, you must confirm that you’ve read and understand the <span class="terms-link"><a href="/legal/terms-of-use/" target="_blank">Terms of Use</a></span>, and I agree to follow them.</p>
+            </div>
+            <div class="alert-button">
+                <button id="agree-btn" class="alert-accept">Agree</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
