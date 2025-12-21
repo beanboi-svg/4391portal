@@ -51,10 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     termsSection.style.display = "none";
     updateUI();
 
-    // Sign In handler
-    signInForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
+    // Sign In handler (called by reCAPTCHA callback)
+    window.onSubmit = function (token) {
         const name = document.getElementById("name").value.trim();
         const grade = document.getElementById("grade").value;
 
@@ -66,19 +64,33 @@ document.addEventListener("DOMContentLoaded", () => {
         if (getCookie("termsAccepted") !== "true") {
             termsSection.style.display = "flex";
             console.log("Terms not accepted yet — showing terms panel and pausing sign-in");
+            return; 
+        }
+
+        setCookie("actorUser", name, tilDayOver().toString());
+        logSignIn(name, grade, token);
+        console.log("User signed in:", name);
+        updateUI(); // Update UI immediately
+    };
+
+    // Sign Out handler (called by reCAPTCHA callback)
+    window.onSignOut = function (token) {
+        const actorUser = getCookie("actorUser");
+        if (!actorUser) {
+            console.log("Sign-out requested but no user is signed in");
             return;
         }
 
-        setCookie("actorUser", name, tilDayOver().toString()); // 12 hour session
-        logSignIn(name, grade);
-        console.log("User signed in:", name);
-        updateUI(); // Update UI immediately
-    });
+        // Clear the actorUser cookie
+        setCookie("actorUser", "", 0);
+        logSignOut(actorUser, token);
+        console.log("User signed out:", actorUser);
+        updateUI();
+    };
 
     termsAgreeButton.addEventListener("click", () => {
-        const oneYearSeconds = 60 * 60 * 24 * 365;
-        setCookie("termsAccepted", "true", oneYearSeconds);
         termsSection.style.display = "none";
+        setCookie("termsAccepted", "true", tilDayOver().toString());
         console.log("Terms accepted — cookie set and hiding terms panel");
 
         if (typeof signInForm.requestSubmit === "function") {
@@ -119,12 +131,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return (86400 - elapsedSeconds);
     }
 
-    function logSignIn(name, grade) {
+    function logSignIn(name, grade, token) {
         console.log(`Sign In: ${name}, Grade: ${grade}, Time: ${new Date().toISOString()}`);
         const toSend = {
             name,
             grade,
             action: "attendance",
+            token
+        }
+
+        fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(toSend)
+        })
+    }
+
+    function logSignOut(name, token) {
+        console.log(`Sign Out: ${name}, Time: ${new Date().toISOString()}`);
+        const toSend = {
+            name,
+            action: "signout",
+            token
         }
 
         fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {

@@ -6,8 +6,9 @@
     <title>Frederick Theatre Online Portal</title>
     <meta name="description" content="Track being on time to performances, and see the schedule for the day">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/favicon.svg">
-    <meta property="og:image" content="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/open-graph.png">
+    <link rel="icon" type="image/svg+xml" href="https://4391.org/assets/favicon.svg">
+    <meta property="og:image" content="https://4391.org/assets/open-graph.png">
+     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="logic.js"></script>
 </head>
 <body>
@@ -62,13 +63,16 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" id="sign-in-btn">Continue</button>
+                    <button id="sign-in-btn" class="g-recaptcha" data-sitekey="6LdSEzIsAAAAAOcQjwRLk72vqooWo59UJ84mHP19" data-callback='onSubmit' data-action='submit'>Submit</button>
                 </div>
             </form>
         </div>
 
         <div id="schedule" style="display: none;">
             <p class="actor-welcome">Hi <span id="user-name"></span>! Lets see whats on the schedule today!</p>
+            <div style="margin-bottom:12px;">
+                <button id="sign-out-btn" type="button" class="g-recaptcha" data-sitekey="6LdSEzIsAAAAAOcQjwRLk72vqooWo59UJ84mHP19" data-callback="onSignOut" data-action="signout">Sign Out</button>
+            </div>
             
             <h1>Today's Schedule</h1>
             <table>
