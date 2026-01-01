@@ -6,8 +6,9 @@
     <title>Frederick Theatre Online Portal</title>
     <meta name="description" content="Easily track actor attendance for rehearsals and performances. Log attendance, stay organized, and keep records up to date.">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/favicon.svg">
-    <meta property="og:image" content="https://raw.githubusercontent.com/beanboi-svg/4391/main/assets/open-graph.png">
+    <link rel="icon" type="image/svg+xml" href="https://4391.org/assets/favicon.svg">
+    <meta property="og:image" content="https://4391.org/assets/open-graph.png">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="logic.js"></script>
 </head>
 <body>
@@ -62,7 +63,7 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" id="sign-in-btn">Continue</button>
+                    <button id="sign-in-btn" class="g-recaptcha" data-sitekey="6LdSEzIsAAAAAOcQjwRLk72vqooWo59UJ84mHP19" data-callback='onSubmit' data-action='submit'>Continue</button>
                 </div>
             </form>
         </div>
@@ -70,7 +71,7 @@
         <div id="sign-out-state" style="display: none;">
             <p class="signed-in-as">Signed in as</p>
             <p id="user-name"></p>
-            <button id="sign-out-btn">End Session</button>
+            <button id="sign-out-btn" type="button" class="g-recaptcha" data-sitekey="6LdSEzIsAAAAAOcQjwRLk72vqooWo59UJ84mHP19" data-callback="onSignOut" data-action="signout">End Session</button>
         </div>
     </div>
     <div id="terms-section" class="terms-alert">

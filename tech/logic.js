@@ -29,10 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     termsSection.style.display = "none";
     updateUI();
 
-    // Sign In handler
-    signInForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
+    // Sign In handler (called by reCAPTCHA callback)
+    window.onSubmit = function (token) {
         const name = document.getElementById("name").value.trim();
         const grade = document.getElementById("grade").value;
 
@@ -47,15 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        setCookie("user", name, 43200); // 12 hour session
-        logSignIn(name, grade);
+        setCookie("user", name, tilDayOver());
+        logSignIn(name, grade, token);
         console.log("User signed in:", name);
         updateUI(); // Update UI immediately
-    });
+    };
 
     termsAgreeButton.addEventListener("click", () => {
-        const oneYearSeconds = 60 * 60 * 24 * 365;
-        setCookie("termsAccepted", "true", oneYearSeconds);
+        setCookie("termsAccepted", "true", tilDayOver());
         termsSection.style.display = "none";
         console.log("Terms accepted — cookie set and hiding terms panel");
 
@@ -66,18 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Sign Out handler
-    signOutBtn.addEventListener("click", () => {
+    // Sign Out handler (called by reCAPTCHA callback)
+    window.onSignOut = function (token) {
         const name = getCookie("user");
         if (!name) {
-            console.log("Sign-out failed: no user cookie found");
+            console.log("Sign-out requested but no user is signed in");
             return;
         }
-        logSignOut(name);
+        logSignOut(name, token);
         deleteCookie("user");
         console.log("User signed out:", name);
         updateUI(); // Update UI immediately
-    });
+    };
 
     // Cookie helper functions
     function setCookie(name, value, seconds) {
@@ -103,13 +100,26 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`Cookie deleted: ${name}`);
     }
 
+    function tilDayOver() {
+        const now = new Date();
+
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        const elapsedSeconds = hours * 3600 + minutes * 60 + seconds;
+
+        return (86400 - elapsedSeconds);
+    }
+
     // Placeholder spreadsheet logging functions
-    function logSignIn(name, grade) {
+    function logSignIn(name, grade, token) {
         console.log(`Sign In: ${name}, Grade: ${grade}, Time: ${new Date().toISOString()}`);
         const toSend = {
             name,
             grade,
-            action: "signin"
+            action: "signin",
+            token
         }
 
         fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
@@ -122,11 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    function logSignOut(name) {
+    function logSignOut(name, token) {
         console.log(`Sign Out: ${name}, Time: ${new Date().toISOString()}`);
         const toSend = {
             name,
-            action: "signout"
+            action: "signout",
+            token
         }
 
         fetch("https://w53rgxzdolrlhohoqmda2hx2ly0swygd.lambda-url.us-east-1.on.aws/", {
