@@ -73,21 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateUI(); // Update UI immediately
     };
 
-    // Sign Out handler (called by reCAPTCHA callback)
-    window.onSignOut = function (token) {
-        const actorUser = getCookie("actorUser");
-        if (!actorUser) {
-            console.log("Sign-out requested but no user is signed in");
-            return;
-        }
-
-        // Clear the actorUser cookie
-        setCookie("actorUser", "", 0);
-        logSignOut(actorUser, token);
-        console.log("User signed out:", actorUser);
-        updateUI();
-    };
-
     termsAgreeButton.addEventListener("click", () => {
         termsSection.style.display = "none";
         setCookie("termsAccepted", "true", tilDayOver().toString());
