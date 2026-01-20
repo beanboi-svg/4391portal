@@ -105,6 +105,11 @@ p a {
     font-family: 'Inter', sans-serif;
 }
 
+.legal-text {
+    position: absolute;
+    bottom: 10px;
+}
+
 ::placeholder {
     font-size: 15px;
     line-height: 18px;
