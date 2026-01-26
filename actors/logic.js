@@ -7,6 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const termsSection = document.getElementById("terms-section");
     const termsAgreeButton = document.getElementById("agree-btn");
 
+    // Store a pending sign-in when the user must accept terms before completing
+    let pendingSignIn = null;
+
+    // Prevent the form from performing a real POST (GitHub Pages is static)
+    if (signInForm) {
+        signInForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            console.log("Prevented default form submission");
+            // Submission is handled by grecaptcha callback / client code
+        });
+    }
+
     // Centralized UI switching function
     function updateUI() {
         const actorUser = getCookie("actorUser");
@@ -62,9 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (getCookie("termsAccepted") !== "true") {
+            // Save the attempted sign-in and show the terms panel instead of submitting
+            pendingSignIn = { name, grade, token };
             termsSection.style.display = "flex";
-            console.log("Terms not accepted yet — showing terms panel and pausing sign-in");
-            return; 
+            console.log("Terms not accepted yet — stored pending sign-in and showing terms panel");
+            return;
         }
 
         setCookie("actorUser", name, tilDayOver().toString());
@@ -78,11 +92,18 @@ document.addEventListener("DOMContentLoaded", () => {
         setCookie("termsAccepted", "true", tilDayOver().toString());
         console.log("Terms accepted — cookie set and hiding terms panel");
 
-        if (typeof signInForm.requestSubmit === "function") {
-            signInForm.requestSubmit();
-        } else {
-            signInForm.submit();
+        if (pendingSignIn) {
+            // Finalize the pending sign-in client-side to avoid a POST
+            setCookie("actorUser", pendingSignIn.name, tilDayOver().toString());
+            logSignIn(pendingSignIn.name, pendingSignIn.grade, pendingSignIn.token);
+            console.log("Finalized pending sign-in for:", pendingSignIn.name);
+            pendingSignIn = null;
+            updateUI();
+            return;
         }
+
+        // No pending sign-in: nothing to submit; keep the flow client-side
+        console.log("No pending sign-in to finalize after accepting terms");
     });
 
     // Cookie helper functions
