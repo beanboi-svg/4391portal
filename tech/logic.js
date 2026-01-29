@@ -39,7 +39,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial UI check
     termsSection.style.display = "none";
-    updateUI();
+
+    // Fetch the terms update date from the terms-of-use page
+    async function getTermsUpdateDate() {
+        try {
+            const response = await fetch("https://portal.4391.org/legal/terms-of-use/");
+            const html = await response.text();
+            const match = html.match(/Last Updated:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})/);
+            if (match) {
+                return match[1];
+            }
+        } catch (err) {
+            console.error("Failed to fetch terms update date:", err);
+        }
+        return null;
+    }
+
+    // Check if terms have been updated since last acceptance
+    async function checkTermsUpdate() {
+        const currentDate = await getTermsUpdateDate();
+        const acceptedDate = getCookie("termsAccepted");
+        
+        if (currentDate && acceptedDate !== currentDate) {
+            console.log(`Terms updated: was "${acceptedDate}", now "${currentDate}". Forcing re-acceptance.`);
+            deleteCookie("termsAccepted");
+            return false; // Terms need to be re-accepted
+        }
+        return true; // Terms are current
+    }
+
+    // Initialize and check terms on page load
+    (async () => {
+        await checkTermsUpdate();
+        updateUI();
+    })();
 
     // Sign In handler (called by reCAPTCHA callback)
     window.onSubmit = function (token) {
@@ -51,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return alert("Please fill in all fields");
         }
 
-        if (getCookie("termsAccepted") !== "true") {
+        if (!getCookie("termsAccepted")) {
             // Save the attempted sign-in and show the terms panel instead of submitting
             pendingSignIn = { name, grade, token };
             termsSection.style.display = "flex";
@@ -65,10 +98,17 @@ document.addEventListener("DOMContentLoaded", () => {
         updateUI(); // Update UI immediately
     };
 
-    termsAgreeButton.addEventListener("click", () => {
-        setCookie("termsAccepted", "true", tilDayOver());
+    termsAgreeButton.addEventListener("click", async () => {
+        const termsDate = await getTermsUpdateDate();
+        if (termsDate) {
+            setCookie("termsAccepted", termsDate, 60 * 60 * 24 * 365);
+            console.log("Terms accepted — cookie set with date:", termsDate);
+        } else {
+            setCookie("termsAccepted", "true", 60 * 60 * 24 * 365);
+            console.log("Terms accepted — cookie set with default value");
+        }
         termsSection.style.display = "none";
-        console.log("Terms accepted — cookie set and hiding terms panel");
+        console.log("Hiding terms panel");
 
         if (pendingSignIn) {
             // Finalize the pending sign-in client-side to avoid a POST
