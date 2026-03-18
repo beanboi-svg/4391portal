@@ -131,10 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Sign-out requested but no user is signed in");
             return;
         }
-        logSignOut(name, token);
-        deleteCookie("user");
-        console.log("User signed out:", name);
-        updateUI(); // Update UI immediately
+        if (confirm("Are you sure you want to sign out?")) {
+            logSignOut(name, token);
+            deleteCookie("user");
+            console.log("User signed out:", name);
+            updateUI(); // Update UI immediately
+        }
     };
 
     // Cookie helper functions
