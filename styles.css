@@ -35,6 +35,51 @@ body {
     background-position: center;
 }
 
+.logo {
+    width: 250px;
+    margin-bottom: 36px;
+}
+
+h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: 320px;
+}
+
+.buttons button {
+    width: auto;
+    min-width: 160px;
+    margin-bottom: 0;
+    padding: 0 24px;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.buttons button:hover {
+    background-color: #EFEFEF;
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.buttons button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .buttons {
+        flex-direction: column;
+    }
+}
+
 .main {
     display: flex;
     height: 100%;
@@ -75,8 +120,6 @@ p a {
     font-weight: 300;
     text-align: center;
     color: black;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
 }
 
 .actor-welcome {
@@ -88,8 +131,6 @@ p a {
     font-weight: 400;
     text-align: center;
     color: black;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
 }
 
 #user-name {
@@ -101,8 +142,6 @@ p a {
     font-weight: 500;
     text-align: center;
     color: black;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
 }
 
 .legal-text {
@@ -122,7 +161,6 @@ select {
     width: 360px;
     height: 55px;
     margin-bottom: 15px;
-    /* keep symmetric padding so text inside inputs is visually centered */
     padding: 0 20px;
     font-size: 15px;
     line-height: 18px;
@@ -154,12 +192,6 @@ select:valid {
     color: black;
 }
 
-select::-webkit-inner-spin-button,
-select::-webkit-outer-spin-button {
-    appearance: none;
-    margin: 0;
-}
-
 select::-ms-expand {
     display: none;
 }
@@ -170,18 +202,19 @@ button {
     font-size: 15px;
     line-height: 20px;
     font-weight: 300;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: #F5F5F5;
     border-radius: 980px;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease 0.02s;
+    transition: background-color 0.16s ease, border-color 0.16s ease;
     font-family: 'Inter', sans-serif;
 }
 
 button:hover {
-    background-color: #333333;
+    background-color: #EFEFEF;
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 #sign-in-state,
@@ -281,12 +314,12 @@ button:hover {
     line-height: 22px;
     font-weight: 500;
     letter-spacing: -0.4px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: #F5F5F5;
     border-radius: 980px;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: background-color 0.2s ease 0.02s;
+    transition: background-color 0.16s ease, border-color 0.16s ease;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
