@@ -1,13 +1,13 @@
 [
-    { "time" : "2026-04-20T15:30:00Z", "task": "Arrive and 5min check-in on stage"},
-    { "time" : "2026-04-20T15:35:00Z", "task": "Hair, Makeup, costume, Check Props, Sweep/set stage, pit warm up"},
-    { "time" : "2026-04-20T16:30:00Z", "task": "Pit Sound Check"},
-    { "time" : "2026-04-20T16:45:00Z", "task": "Actors Mic Check"},
-    { "time" : "2026-04-20T17:00:00Z", "task": "Actor warm-up in C112"},
-    { "time" : "2026-04-20T17:15:00Z", "task": "All company last notes/reminders C112"},
-    { "time" : "2026-04-20T17:25:00Z", "task": "Places"},
-    { "time" : "2026-04-20T17:30:00Z", "task": "Downbeat. Run begins NO STOPS"},
-    { "time" : "2026-04-20T19:45:00Z", "task": "Company in audience. Notes"},
-    { "time" : "2026-04-20T20:00:00Z", "task": "Put away mics, costumes, props. Clean C-Hallway and rooms"},
-    { "time" : "2026-04-20T20:30:00Z", "task": "Picked up and head home."}
+    { "time" : "2026-04-20T15:30:00-06:00", "task": "Arrive and 5min check-in on stage"},
+    { "time" : "2026-04-20T15:35:00-06:00", "task": "Hair, Makeup, costume, Check Props, Sweep/set stage, pit warm up"},
+    { "time" : "2026-04-20T16:30:00-06:00", "task": "Pit Sound Check"},
+    { "time" : "2026-04-20T16:45:00-06:00", "task": "Actors Mic Check"},
+    { "time" : "2026-04-20T17:00:00-06:00", "task": "Actor warm-up in C112"},
+    { "time" : "2026-04-20T17:15:00-06:00", "task": "All company last notes/reminders C112"},
+    { "time" : "2026-04-20T17:25:00-06:00", "task": "Places"},
+    { "time" : "2026-04-20T17:30:00-06:00", "task": "Downbeat. Run begins NO STOPS"},
+    { "time" : "2026-04-20T19:45:00-06:00", "task": "Company in audience. Notes"},
+    { "time" : "2026-04-20T20:00:00-06:00", "task": "Put away mics, costumes, props. Clean C-Hallway and rooms"},
+    { "time" : "2026-04-20T20:30:00-06:00", "task": "Picked up and head home."}
 ]
