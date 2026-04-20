@@ -139,7 +139,7 @@ p a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
 }
 
 #schedule .actor-welcome {
@@ -149,38 +149,58 @@ p a {
     line-height: 24px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.72);
+    text-decoration: none;
 }
 
-#schedule h1 {
-    margin: 4px 0 6px;
-    font-size: 36px;
-    line-height: 42px;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    text-align: center;
+.schedule-panel {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
 }
 
-#schedule table {
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 18px 20px;
+    background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.schedule-header h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.schedule-date {
+    width: auto;
+    margin: 0;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.agenda-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 18px;
-    overflow: hidden;
-    background: #ffffff;
 }
 
-#schedule thead {
-    background: #f5f5f5;
-}
-
-#schedule th,
-#schedule td {
-    padding: 14px 16px;
+.agenda-table th,
+.agenda-table td {
+    padding: 14px 20px;
     text-align: left;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-#schedule th {
+.agenda-table th {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.08em;
@@ -189,15 +209,26 @@ p a {
     color: rgba(0, 0, 0, 0.62);
 }
 
-#schedule td {
+.agenda-table td {
     font-size: 15px;
     line-height: 22px;
     font-weight: 400;
     color: black;
 }
 
-#schedule tbody tr:last-child td {
+.agenda-table tbody tr:last-child td {
     border-bottom: none;
+}
+
+.schedule-empty {
+    width: 100%;
+    margin: 0;
+    padding: 16px 20px 20px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.56);
 }
 
 #user-name {
@@ -402,25 +433,64 @@ button:hover {
     }
 }
 
-@media (max-width: 450px) {
-    svg {
-        width: 360px;
-        height: 36px;
+@media (max-width: 600px) {
+    .main svg {
+        width: min(360px, 90vw);
+        height: auto;
     }
 
+    #signin-form,
     input,
     select,
     button {
-        width: 360px;
+        width: min(360px, 90vw);
     }
 
-    #schedule h1 {
-        font-size: 30px;
-        line-height: 36px;
+    #schedule {
+        width: min(360px, 90vw);
     }
 
-    #schedule th,
-    #schedule td {
-        padding: 12px 12px;
+    .schedule-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .agenda-table thead {
+        display: none;
+    }
+
+    .agenda-table,
+    .agenda-table tbody,
+    .agenda-table tr,
+    .agenda-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .agenda-table tr {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .agenda-table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .agenda-table td {
+        border-bottom: none;
+        padding: 2px 20px;
+    }
+
+    .agenda-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        font-size: 11px;
+        line-height: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 600;
     }
 }

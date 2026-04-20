@@ -69,19 +69,24 @@
         </div>
 
         <div id="schedule" style="display: none;">
-            <p class="actor-welcome">Hi <span id="user-name"></span>! Let's see what's on the schedule today.</p>
-            
-            <h2>Today's Schedule</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Event</th>
-                    </tr>
-                </thead>
-                <tbody id="schedule-entries">
-                </tbody>
-            </table>
+            <p class="actor-welcome">Hi <span id="user-name"></span>! Here's your agenda for today.</p>
+            <div class="schedule-panel">
+                <div class="schedule-header">
+                    <h2>Today's Agenda</h2>
+                    <p id="schedule-date" class="schedule-date"></p>
+                </div>
+                <table class="agenda-table" aria-label="Actor agenda">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-entries">
+                    </tbody>
+                </table>
+                <p id="schedule-empty" class="schedule-empty" hidden>No agenda entries yet for today.</p>
+            </div>
         </div>
         <p class="legal-text"><a href="/legal/privacy-policy/" target="_blank">Privacy Policy</a> | <a href="/legal/terms-of-use/" target="_blank">Terms of Use</a></p>
     </div>

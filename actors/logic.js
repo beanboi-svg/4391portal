@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const schedule = document.getElementById("schedule");
     const tbody = document.getElementById("schedule-entries");
     const userNameSpan = document.getElementById("user-name");
+    const scheduleDate = document.getElementById("schedule-date");
+    const scheduleEmpty = document.getElementById("schedule-empty");
     const termsSection = document.getElementById("terms-section");
     const termsAgreeButton = document.getElementById("agree-btn");
 
@@ -27,24 +29,30 @@ document.addEventListener("DOMContentLoaded", () => {
         if (actorUser) {
             fetch('../agenda.json').then((response) => response.json()).then(json => {
                 tbody.innerHTML = "";
+                const todayEntries = Array.isArray(json) ? json : [];
 
-                json.forEach(entry => { 
+                todayEntries.forEach(entry => {
                     const tr = document.createElement("tr");
-  
+
                     const timeCell = document.createElement("td");
                     const date = new Date(entry.time);
-                    timeCell.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
+                    timeCell.textContent = date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+                    timeCell.setAttribute("data-label", "Time");
+
                     const taskCell = document.createElement("td");
                     taskCell.textContent = entry.task;
-  
+                    taskCell.setAttribute("data-label", "Event");
+
                     tr.appendChild(timeCell);
                     tr.appendChild(taskCell);
-  
+
                     tbody.appendChild(tr);
                 });
+
+                scheduleEmpty.hidden = todayEntries.length !== 0;
             }).catch(function () {
                 console.error("Failed to fetch schedule");
+                scheduleEmpty.hidden = false;
             });
 
             signInState.style.display = "none";
@@ -61,6 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial UI check
     termsSection.style.display = "none";
+    if (scheduleDate) {
+        scheduleDate.textContent = new Date().toLocaleDateString([], {
+            weekday: "long",
+            month: "long",
+            day: "numeric"
+        });
+    }
     updateUI();
 
     // Sign In handler (called by reCAPTCHA callback)
